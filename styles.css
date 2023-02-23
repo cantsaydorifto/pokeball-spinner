@@ -1,0 +1,106 @@
+html,body{
+    min-height: 100%;
+}
+
+
+body {
+    margin: 0;
+    background-color: rgb(142, 136, 136);
+
+}
+
+.wrapper {
+    margin: 350px auto 0 auto;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background-color: rgb(74, 73, 73);
+    position: relative;
+    z-index: -1;
+    animation: rotate 1s linear infinite;
+}
+
+.pokeballWrapper{
+    animation: spin 1s ease-in-out infinite;
+}
+
+.wrapper::before {
+    content: "";
+    width: 180px;
+    height: 90px;
+    border-top-left-radius: 90px;
+    border-top-right-radius: 90px;
+    background-color: red;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: -1;
+}
+
+.wrapper::after {
+    content: "";
+    width: 180px;
+    height: 90px;
+    border-bottom-left-radius: 90px;
+    border-bottom-right-radius: 90px;
+    background-color: white;
+    position: absolute;
+    top: 95px;
+    left: 5px;
+    z-index: -1;
+}
+
+.pokeball-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.pokeball {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    border: 5px solid rgb(74, 73, 73);
+    top: calc(90px - 15px);
+    left: calc(90px - 15px);
+}
+
+.pokeball::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 7.5px;
+    left: -75px;
+    width: 181px;
+    height: 15px;
+    background-color: rgb(74, 73, 73);
+}
+
+@keyframes spin {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-200px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes rotate {
+
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
