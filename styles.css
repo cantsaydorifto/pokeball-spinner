@@ -1,7 +1,14 @@
-html,body{
-    min-height: 100%;
+:root {
+    --pokeball-height: 150px;
 }
 
+html,
+body {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 body {
     margin: 0;
@@ -10,9 +17,8 @@ body {
 }
 
 .wrapper {
-    margin: 350px auto 0 auto;
-    width: 190px;
-    height: 190px;
+    width: var(--pokeball-height);
+    height: var(--pokeball-height);
     border-radius: 50%;
     background-color: rgb(74, 73, 73);
     position: relative;
@@ -20,34 +26,32 @@ body {
     animation: rotate 1s linear infinite;
 }
 
-.pokeballWrapper{
+.pokeball-container {
     animation: spin 1s ease-in-out infinite;
 }
 
 .wrapper::before {
     content: "";
-    width: 180px;
-    height: 90px;
-    border-top-left-radius: 90px;
-    border-top-right-radius: 90px;
+    width: calc(var(--pokeball-height) - 10px);
+    height: calc((var(--pokeball-height) - 10px) / 2);
+    border-top-left-radius: calc((var(--pokeball-height) - 10px) / 2);
+    border-top-right-radius: calc((var(--pokeball-height) - 10px) / 2);
     background-color: red;
     position: absolute;
     top: 5px;
     left: 5px;
-    z-index: -1;
 }
 
 .wrapper::after {
     content: "";
-    width: 180px;
-    height: 90px;
-    border-bottom-left-radius: 90px;
-    border-bottom-right-radius: 90px;
+    width: calc(var(--pokeball-height) - 10px);
+    height: calc((var(--pokeball-height) - 10px) / 2);
+    border-bottom-left-radius: calc((var(--pokeball-height) - 10px) / 2);
+    border-bottom-right-radius: calc((var(--pokeball-height) - 10px) / 2);
     background-color: white;
     position: absolute;
-    top: 95px;
+    top: calc(var(--pokeball-height) / 2);
     left: 5px;
-    z-index: -1;
 }
 
 .pokeball-wrapper {
@@ -62,8 +66,8 @@ body {
     background-color: white;
     border-radius: 50%;
     border: 5px solid rgb(74, 73, 73);
-    top: calc(90px - 15px);
-    left: calc(90px - 15px);
+    top: calc(calc((var(--pokeball-height) - 10px) / 2) - 15px);
+    left: calc(calc((var(--pokeball-height) - 10px) / 2) - 15px);
 }
 
 .pokeball::before {
@@ -71,8 +75,9 @@ body {
     z-index: -1;
     position: absolute;
     top: 7.5px;
-    left: -75px;
-    width: 181px;
+    left: calc(-1 * var(--pokeball-height) / 2 + 16px);
+    /* left: 0; */
+    width: calc(var(--pokeball-height) - 2px);
     height: 15px;
     background-color: rgb(74, 73, 73);
 }
@@ -83,7 +88,7 @@ body {
     }
 
     50% {
-        transform: translateY(-200px);
+        transform: translateY(-100px);
     }
 
     100% {
@@ -100,6 +105,7 @@ body {
     50% {
         transform: rotate(180deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
