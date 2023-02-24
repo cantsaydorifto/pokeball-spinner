@@ -13,7 +13,6 @@ body {
 body {
     margin: 0;
     background-color: rgb(142, 136, 136);
-
 }
 
 .wrapper {
@@ -28,6 +27,20 @@ body {
 
 .pokeball-container {
     animation: spin 1s ease-in-out infinite;
+}
+
+.hand-container{
+    position: relative;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    left: -30px;
+    animation: hand 1s ease-in-out infinite;
 }
 
 .wrapper::before {
@@ -70,6 +83,19 @@ body {
     left: calc(calc((var(--pokeball-height) - 10px) / 2) - 15px);
 }
 
+.pokeball::after{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid black;
+    animation: redBlinker 1s ease-in-out infinite;
+}
+
 .pokeball::before {
     content: "";
     z-index: -1;
@@ -108,5 +134,29 @@ body {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes hand {
+    0%{
+        transform: rotate(30deg);
+    }
+    50%{
+        transform: rotate(-30deg);
+    }
+    100%{
+        transform: rotate(30deg);
+    }
+}
+
+@keyframes redBlinker {
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: red;
+    }
+    100%{
+        background-color: white;
     }
 }
